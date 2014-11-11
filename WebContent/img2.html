@@ -1,0 +1,66 @@
+
+
+
+
+
+
+<div ng-controller="ModalDemoCtrl">
+<script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title">I'm a modal!</h3>
+        </div>
+        <div class="modal-body">
+            <ul>
+                <li ng-repeat="item in items">
+                    <a ng-click="selected.item = item">{{ item }}</a>
+                </li>
+            </ul>
+            Selected: <b>{{ selected.item }}</b>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>
+</script>
+
+<div>
+
+ 
+<!-- beginning of content block -->
+<div style="position:relative; display:block; float:left;" ng-repeat="entry in friends | filter:q" ng-show="($index<itemPerPage*bigCurrentPage)&&($index>=itemPerPage*(bigCurrentPage-1))"> 
+<div class="ui teal ribbon label" style="position:absolute; left:10px; top:20px; z-index:99; font-size:14px;"> 
+"Like: {{entry.like}}"
+</div>
+<div class="view view-tenth">
+<img src="{{entry.img}}" width='250px' height='400px'>
+<div class="mask">
+<h2>{{entry.name}}</h2>
+<p> The beautiful flower</p>
+<p>Suitable for: Fei</p>
+<p style="text-align:right;"> Created By Aaron<br/>
+Today</p>
+</div>
+</div>
+
+<div style="position:absolute; right:40px; bottom:40px;">
+<button type="button" class="btn btn-lg btn-info" tag="myObjID" ng-click="open('lg')">Detail Page</button>
+<!-- <button type="button" class="btn btn-lg btn-info" tag="myObjID" onclick="goToDetail(this);">Detail</button> -->
+</div>
+
+</div>
+<!-- end of content block -->
+</div>
+</div>
+
+
+
+
+
+
+</div>
+</div>
+
+
+
+
+

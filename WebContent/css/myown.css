@@ -1,0 +1,8 @@
+@CHARSET "UTF-8";
+
+.myown{
+	position: relative;
+	display: block;
+	overflow: hidden;
+	padding:10px;
+}

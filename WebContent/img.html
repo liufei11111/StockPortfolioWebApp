@@ -1,0 +1,77 @@
+
+<div id="img_wrapper">
+<%
+List<Outfit> list = null;
+String wfilter = "";
+String ofilter = "";
+String sfilter = "";
+try{
+wfilter = request.getParameter("weather");
+ofilter = request.getParameter("occassion");
+sfilter = request.getParameter("style");
+if( (wfilter == null||wfilter.isEmpty()) && (ofilter == null||ofilter.isEmpty()) && (sfilter == null||sfilter.isEmpty())){
+list = DBmanager.selectAllOutfit();
+}else{
+list = DBmanager.selectWithFilter(wfilter, ofilter, sfilter);
+}
+}catch(Exception e){
+e.printStackTrace();
+}
+String path_prefix = "userData/outfit_img/";
+if(list == null) out.println("error");
+
+for(Outfit o : list){
+out.println("<div style=\"position:relative; display:block; float:left;\">"); 
+
+out.println("<div class=\"ui teal ribbon label\" style=\"position:absolute; left:10px; top:20px; z-index:99; font-size:14px;\">"); 
+out.println("Like: "+o.rate);
+out.println("</div>");
+
+out.println("<div class=\"view view-tenth\">"); 
+out.println("<img src='"+path_prefix+o.opicture+"' width='250px' height='400px'/>");
+out.println("<div class=\"mask\">");
+out.println("<h2>"+ o.oname +"</h2>");
+out.println("<p>"+ o.description +"</p>");
+out.println("<p>Suitable for: "+o.types+"</p>");
+out.println("<p style=\"text-align:right;\"> Created By "+ o.username +"<br/>");
+out.println(o.when+"</p>");
+out.println("</div>");
+out.println("</div>");
+
+out.println("<div style=\"position:absolute; right:40px; bottom:40px;\">");  
+out.println("<button type=\"button\" class=\"btn btn-lg btn-info\" tag=\""+o.oid+"\" onclick=\"goToDetail(this);\">Detail</button>"); 
+out.println("</div>");
+
+out.println("</div>");
+}
+%>
+
+<!-- for debug -->
+<div style="position:relative; display:block; float:left; display:none;">
+<div class="ui teal ribbon label" style="position:absolute; left:10px; top:20px; z-index:99; font-size:14px;">
+Rate: 5
+</div>
+
+<div style="position:absolute; right:20px; top:20px; z-index:99;">
+<button class="ui icon button" name="submit" value="submit" style="background:#F08080">
+		<i class="thumbs up outline icon"></i>
+</button>
+</div>
+
+<div class="view view-tenth">  
+<img src="http://tympanus.net/Tutorials/OriginalHoverEffects/images/1.jpg" />  
+     <div class="mask">  
+     <h2>Title</h2>  
+     <p>Your Text</p>  
+
+     
+     </div>  
+</div>
+
+<div style="position:absolute; right:40px; bottom:40px;">
+<button type="button" class="btn btn-lg btn-info">Detail</button>
+</div>
+</div><!-- for debug end-->
+
+</div>
+</div>
