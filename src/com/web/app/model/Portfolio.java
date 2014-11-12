@@ -5,20 +5,20 @@ import java.util.ArrayList;
 public class Portfolio {
     String name;
     String description;
-    ArrayList<StockOnDate> stocks;
+    ArrayList<PortfolioSegment> segments;
     public Portfolio(){
-        this.stocks=new ArrayList<StockOnDate>();
+        this.segments=new ArrayList<PortfolioSegment>();
         
     }
-    public Portfolio(String name,String description,ArrayList<StockOnDate> stocks){
-        this.stocks=stocks;
+    public Portfolio(String name,String description,ArrayList<PortfolioSegment> segments){
+        this.segments=segments;
         this.name=name;
         this.description=description;
         
     }
     public String toString(){
         return "{ "+"name: "+name+" ,"
-                +"numOfStocks: "+stocks.size()+" ,"
+                +"numOfSegments: "+segments.size()+" ,"
                 +"description length: "+description.length()+"}";
     }
     public String getName() {
@@ -33,10 +33,11 @@ public class Portfolio {
     public void setDescription(String description) {
         this.description = description;
     }
-    public ArrayList<StockOnDate> getStocks() {
-        return stocks;
+    public ArrayList<PortfolioSegment> getSegments() {
+        return segments;
     }
-    public void setStocks(ArrayList<StockOnDate> stocks) {
-        this.stocks = stocks;
+    public void setSegments(ArrayList<PortfolioSegment> segments) {
+        this.segments = segments;
     }
+
 }

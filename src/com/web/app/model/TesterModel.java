@@ -22,8 +22,12 @@ public class TesterModel {
         // put the elements of a stock together
         StockOnDate one=new StockOnDate(new Date(),"Amazon","AMZN","shopping and AWS",history);
         listOfStocks.add(one);
-        // put elements into a portfolio
-        Portfolio pfl=new Portfolio("IT","it industry description",listOfStocks);
+        // put elements into a segment
+        PortfolioSegment segment=new PortfolioSegment("first_segment","first seg description",listOfStocks);
+        ArrayList<PortfolioSegment> segments=new ArrayList<PortfolioSegment>();
+        // put segment into segments
+        segments.add(segment);
+        Portfolio pfl=new Portfolio("IT","it industry description",segments);
         //convert to a string of Json from Portfolio class
         Gson g=new Gson();
         String jsonStr=g.toJson(pfl);
